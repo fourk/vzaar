@@ -10,5 +10,5 @@ setup(name='vzaar',
         author="James Burkhart",
         author_email="pyvzaar@jamesburkhart.com",
         url="https://github.com/fourk/vzaar",
-        version='1.0.0',
+        version='1.0.1',
         py_modules=['vzaar'])
