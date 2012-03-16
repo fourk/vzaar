@@ -29,6 +29,8 @@ to your settings, then import DjangoVzaar instead of importing Vzaar.
             ex: http://example.com/callback/
     MAX_VIDEO_SIZE - integer - size (in bytes) of maximum alowed upload size
 
+Once the above keys are defined in your settings.py file, you can use the api like so:
+
     from vzaar import DjangoVzaar
     api = DjangoVzaar()
 
