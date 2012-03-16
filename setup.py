@@ -1,10 +1,10 @@
 from distutils.core import setup
 
-with open('README') as file:
+with open('README.md') as file:
     long_description = file.read()
 
 setup(name='vzaar',
-        summary="Python library wrapping Vzaar's v1.0 API",
+        description="Python library wrapping Vzaar's v1.0 API",
         long_description=long_description,
         keywords=['vzaar', 'video'],
         author="James Burkhart",
