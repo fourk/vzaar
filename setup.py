@@ -1,6 +1,6 @@
 from distutils.core import setup
 
-with open('README.md') as file:
+with open('README') as file:
     long_description = file.read()
 
 setup(name='vzaar',
