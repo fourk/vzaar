@@ -1,4 +1,4 @@
-__version__ = '1.0.2'
+__version__ = '1.0.3'
 __author__ = "James Burkhart"
 
 import oauth2 as oauth
@@ -13,7 +13,7 @@ The Vzaar object expects to be instantiated with the following positional argume
     vzaar_username - string - your username (not your email)
     vzaar_key - string - Vzaar API key
     video_success_redirect - string - where to redirect a user after upload
-            ex: http://example.com/callback/
+            ex: http://example.com/callback/ (or a callable that returns a string)
     max_video_size - integer - size (in bytes) of maximum alowed upload size
 
     If you're using django, simply set a value for each of the above keys in
@@ -64,6 +64,8 @@ class Vzaar(object):
             max_video_size):
 
         self.VIDEO_SUCCESS_REDIRECT = video_success_redirect
+        if hasattr(self.VIDEO_SUCCESS_REDIRECT, '__call__'):
+            self.VIDEO_SUCCESS_REDIRECT = self.VIDEO_SUCCESS_REDIRECT()
         self.MAX_VIDEO_SIZE = max_video_size
         self.token = oauth.Token(key=vzaar_username,
                 secret=vzaar_key)
@@ -315,3 +317,4 @@ class DjangoVzaar(Vzaar):
         super(DjangoVzaar, self).__init__(settings.VZAAR_USERNAME,
                 settings.VZAAR_KEY, settings.VIDEO_SUCCESS_REDIRECT,
                 settings.MAX_VIDEO_SIZE)
+
