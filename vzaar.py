@@ -1,4 +1,4 @@
-__version__ = '1.0.6'
+__version__ = '1.0.7'
 __author__ = "James Burkhart"
 
 import oauth2 as oauth
@@ -152,8 +152,11 @@ class Vzaar(object):
     def _assert_status(self, response, body, status='200'):
         """Checks if the expected status code was returned - raises exception
         if not."""
-        if response.get('status') != '200':
-            raise Exception('Error - %s \n--\n %s' % (response, body))
+        if response.get('status') != status:
+            raise Exception(('Unexpected status. Expected %s -'
+                    'Got %s \n %s \n--\n %s') % (
+                        response.get('status'), status, response, body)
+                    )
 
     def account_details(self, account):
         """
